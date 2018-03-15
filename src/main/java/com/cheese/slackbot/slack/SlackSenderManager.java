@@ -17,7 +17,29 @@ public class SlackSenderManager {
     }
 
     public boolean send(SlackTargetEnum target, SlackMessageDto.Basic dto) {
+        try {
+            restTemplate.postForEntity(target.getWebHookUrl(), dto, String.class);
+            return true;
+        } catch (Exception e) {
+            log.error("Occur Exception: {}", e);
+            return false;
+        }
 
+    }
+
+    // TODO: 2018. 3. 16. 중복 코드 제거 -yun
+    public boolean send(SlackTargetEnum target, SlackMessageDto.Attachments dto) {
+        try {
+            restTemplate.postForEntity(target.getWebHookUrl(), dto, String.class);
+            return true;
+        } catch (Exception e) {
+            log.error("Occur Exception: {}", e);
+            return false;
+        }
+
+    }
+
+    public boolean send(SlackTargetEnum target, SlackMessageDto.MessageButtons dto) {
         try {
             restTemplate.postForEntity(target.getWebHookUrl(), dto, String.class);
             return true;
