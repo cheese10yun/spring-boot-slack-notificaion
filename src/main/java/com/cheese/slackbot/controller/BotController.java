@@ -34,4 +34,11 @@ public class BotController {
 
         return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, basic));
     }
+
+    @RequestMapping(method = POST)
+    public ResponseEntity attachment(@RequestBody SlackMessageDto.Attachments dto) {
+        return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, dto));
+    }
+
+
 }
