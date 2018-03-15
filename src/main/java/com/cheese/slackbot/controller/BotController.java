@@ -26,7 +26,7 @@ public class BotController {
     private SlackSenderManager slackSenderManager;
 
     @RequestMapping(method = GET)
-    public ResponseEntity sample(@RequestParam(value = "text") String text) {
+    public ResponseEntity basic(@RequestParam(value = "text") String text) {
 
         final SlackMessageDto.Basic basic = SlackMessageDto.Basic.builder()
                 .text(text)
