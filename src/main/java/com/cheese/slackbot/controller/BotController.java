@@ -25,7 +25,7 @@ public class BotController {
     @Autowired
     private SlackSenderManager slackSenderManager;
 
-    @RequestMapping(method = GET)
+    @RequestMapping(value = "basic", method = GET)
     public ResponseEntity basic(@RequestParam(value = "text") String text) {
 
         final SlackMessageDto.Basic basic = SlackMessageDto.Basic.builder()
@@ -35,8 +35,13 @@ public class BotController {
         return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, basic));
     }
 
-    @RequestMapping(method = POST)
+    @RequestMapping(value = "attachment", method = POST)
     public ResponseEntity attachment(@RequestBody SlackMessageDto.Attachments dto) {
+        return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, dto));
+    }
+
+    @RequestMapping(value = "button", method = POST)
+    public ResponseEntity button(@RequestBody SlackMessageDto.MessageButtons dto) {
         return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, dto));
     }
 

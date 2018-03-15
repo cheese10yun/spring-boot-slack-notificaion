@@ -39,4 +39,15 @@ public class SlackSenderManager {
 
     }
 
+    public boolean send(SlackTargetEnum target, SlackMessageDto.MessageButtons dto) {
+        try {
+            restTemplate.postForEntity(target.getWebHookUrl(), dto, String.class);
+            return true;
+        } catch (Exception e) {
+            log.error("Occur Exception: {}", e);
+            return false;
+        }
+
+    }
+
 }

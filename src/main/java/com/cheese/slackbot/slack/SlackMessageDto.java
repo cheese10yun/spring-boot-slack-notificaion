@@ -31,6 +31,75 @@ public class SlackMessageDto {
         }
     }
 
+    @Getter
+    @NoArgsConstructor
+    public static class MessageButtons {
+        private String text;
+        private List<MessageButtonAttachment> attachments;
+
+        @Builder
+        public MessageButtons(String text, List<MessageButtonAttachment> attachments) {
+            this.text = text;
+            this.attachments = attachments;
+        }
+    }
+
+    @Getter
+    @NoArgsConstructor
+    public static class MessageButtonAttachment {
+        private String text;
+        private String fallback;
+        private String callback_id;
+        private String color;
+        private String attachment_type;
+        private List<Action> actions;
+
+        @Builder
+        public MessageButtonAttachment(String text, String fallback, String callback_id, String color, String attachment_type, List<Action> actions) {
+            this.text = text;
+            this.fallback = fallback;
+            this.callback_id = callback_id;
+            this.color = color;
+            this.attachment_type = attachment_type;
+            this.actions = actions;
+        }
+    }
+
+    @Getter
+    @NoArgsConstructor
+    public static class Action {
+        private String name;
+        private String text;
+        private String type;
+        private String value;
+        private Confirm confirm;
+
+        @Builder
+        public Action(String name, String text, String type, String value, Confirm confirm) {
+            this.name = name;
+            this.text = text;
+            this.type = type;
+            this.value = value;
+            this.confirm = confirm;
+        }
+    }
+
+    @Getter
+    @NoArgsConstructor
+    public static class Confirm {
+        private String title;
+        private String text;
+        private String ok_text;
+        private String dismiss_text;
+
+        @Builder
+        public Confirm(String title, String text, String ok_text, String dismiss_text) {
+            this.title = title;
+            this.text = text;
+            this.ok_text = ok_text;
+            this.dismiss_text = dismiss_text;
+        }
+    }
 
     @Getter
     @NoArgsConstructor
@@ -76,7 +145,6 @@ public class SlackMessageDto {
     public static class Field {
         private String title;
         private String value;
-//        private boolean short;
 
         @Builder
         public Field(String title) {
