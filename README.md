@@ -2,8 +2,8 @@
 # Slack Bot
 
 ## Basic Message
-### Cul
-```cul
+### Curl
+```curl
 curl -X GET \
   'http://localhost:8080/bot/basic?text=%EC%9D%BC%EB%8B%A8%ED%85%8C%EC%8A%A4' \
   -H 'cache-control: no-cache' \
@@ -14,8 +14,8 @@ curl -X GET \
 ![](https://i.imgur.com/vo8xT1W.png)
 
 ## Attachments Message
-### Cul
-```cul
+### Curl
+```curl
 curl -X POST \
   http://localhost:8080/bot/attachment \
   -H 'cache-control: no-cache' \
@@ -53,8 +53,8 @@ curl -X POST \
 ![](https://i.imgur.com/5C2MmDG.png)
 
 ## Message-Buttons
-### Cul
-```cul
+### Curl
+```curl
 curl -X POST \
   http://localhost:8080/bot/button \
   -H 'cache-control: no-cache' \
