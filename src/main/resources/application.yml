@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: local
+
+# Local 환경
+---
+spring:
+  profiles: local
+
+logging:
+  level:
+    ROOT: debug
