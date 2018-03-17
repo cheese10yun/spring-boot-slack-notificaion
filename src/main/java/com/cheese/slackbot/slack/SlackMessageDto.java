@@ -4,12 +4,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SlackMessageDto {
 
     @Getter
+    @NoArgsConstructor
     public static class Basic {
         private String text;
 

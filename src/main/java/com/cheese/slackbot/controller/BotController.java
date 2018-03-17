@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
@@ -23,16 +21,9 @@ public class BotController {
     @Autowired
     private SlackSenderManager slackSenderManager;
 
-
-
-    @RequestMapping(value = "basic", method = GET)
-    public ResponseEntity basic(@RequestParam(value = "text") String text) {
-
-        final SlackMessageDto.Basic basic = SlackMessageDto.Basic.builder()
-                .text(text)
-                .build();
-
-        return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, basic));
+    @RequestMapping(value = "basic", method = POST)
+    public ResponseEntity basic(@RequestBody SlackMessageDto.Basic dto) {
+        return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, dto));
     }
 
     @RequestMapping(value = "attachment", method = POST)
