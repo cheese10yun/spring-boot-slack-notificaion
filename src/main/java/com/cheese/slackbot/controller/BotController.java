@@ -4,8 +4,6 @@ package com.cheese.slackbot.controller;
 import com.cheese.slackbot.slack.SlackMessageDto;
 import com.cheese.slackbot.slack.SlackSenderManager;
 import com.cheese.slackbot.slack.SlackTargetEnum;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +23,7 @@ public class BotController {
     @Autowired
     private SlackSenderManager slackSenderManager;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+
 
     @RequestMapping(value = "basic", method = GET)
     public ResponseEntity basic(@RequestParam(value = "text") String text) {
@@ -35,27 +32,17 @@ public class BotController {
                 .text(text)
                 .build();
 
-        return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, writeValueAsString(basic)));
+        return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, basic));
     }
 
     @RequestMapping(value = "attachment", method = POST)
     public ResponseEntity attachment(@RequestBody SlackMessageDto.Attachments dto) {
-        return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, writeValueAsString(dto)));
+        return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, dto));
     }
 
     @RequestMapping(value = "button", method = POST)
     public ResponseEntity button(@RequestBody SlackMessageDto.MessageButtons dto) {
-        return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, writeValueAsString(dto)));
-    }
-
-    private String writeValueAsString(Object obj) {
-        String json = null;
-        try {
-            json = objectMapper.writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
-            log.error("Occur JsonProcessingException: {}", e);
-        }
-        return json;
+        return ResponseEntity.ok(slackSenderManager.send(SlackTargetEnum.CH_BOT, dto));
     }
 
 
