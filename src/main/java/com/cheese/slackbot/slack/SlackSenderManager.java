@@ -1,5 +1,6 @@
 package com.cheese.slackbot.slack;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,7 @@ public class SlackSenderManager {
     private String writeValueAsString(Object obj) {
         String json = null;
         try {
+            objectMapper.configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
             json = objectMapper.writeValueAsString(obj);
         } catch (JsonProcessingException e) {
             log.error("Occur JsonProcessingException: {}", e);
