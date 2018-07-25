@@ -1,23 +1,28 @@
+# Slack Notification
 
-# Slack Bot
+Spring boot으로 초간단하게 Slack Message 보내기를 만들어 보는 프로젝트입니다. [Slack Message](https://api.slack.com/docs/messages/builder) 에서 제공하는 3가지 메시지를 보내 보겠습니다. 포스팅 하단에 Curl로 실제 메시지를 보내 볼 수 있습니다.
 
-## Basic Message
-### Curl
-```curl
-curl -X GET \
-  'http://localhost:8080/bot/basic?text=%EC%9D%BC%EB%8B%A8%ED%85%8C%EC%8A%A4' \
-  -H 'cache-control: no-cache' \
-  -H 'postman-token: 1e844242-4c69-eb63-9f80-3e7665825e5b'
-```
-
-### Basic Image
-![](https://i.imgur.com/vo8xT1W.png)
-
-## Attachments Message
-### Curl
+# Basic Message
+## Curl
 ```curl
 curl -X POST \
-  http://localhost:8080/bot/attachment \
+  http://localhost:8080/slack/basic \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: c1f6c1bf-3be6-81f0-af7f-c407997ce8f8' \
+  -d '{
+  "text": "기본메시지"
+}'
+```
+
+## Basic Image
+![](https://i.imgur.com/vo8xT1W.png)
+
+# Attachments Message
+## Curl
+```curl
+curl -X POST \
+  http://localhost:8080/slack/attachment \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
   -H 'postman-token: 410798ba-9355-8171-6439-b7de11052ca0' \
@@ -49,14 +54,14 @@ curl -X POST \
 }'
 ```
 
-### Basic Image
+## Basic Image
 ![](https://i.imgur.com/5C2MmDG.png)
 
-## Message-Buttons
-### Curl
+# Message-Buttons
+## Curl
 ```curl
 curl -X POST \
-  http://localhost:8080/bot/button \
+  http://localhost:8080/slack/button \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
   -H 'postman-token: 558557b0-f75e-56c1-6b84-22655bc19ba1' \
@@ -101,6 +106,6 @@ curl -X POST \
 }'
 ```
 
-### Basic Image
+## Basic Image
 ![](https://i.imgur.com/7WZg910.png)
 
