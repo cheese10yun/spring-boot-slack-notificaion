@@ -16,7 +16,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RequestMapping("slack")
 @AllArgsConstructor
 @Slf4j
-public class BotController {
+public class SlackController {
 
     private SlackSenderManager slackSenderManager;
 
