@@ -1,5 +1,5 @@
 # Slack Notification
-Spring boot 으로 초간단하게 Slack Message 보내기를 만들어 보는 프로젝트입니다. [Slack Message](https://api.slack.com/docs/messages/builder) 에서 제공하는 3 가지 메세지를 보내 보겠습니다. 포스팅 하단에 Curl로 실제 메세지를 보내 볼 수 있습니다.
+Spring boot으로 초간단하게 Slack Message 보내기를 만들어 보는 프로젝트입니다. [Slack Message](https://api.slack.com/docs/messages/builder) 에서 제공하는 3가지 메시지를 보내 보겠습니다. 전체 코드를 보시는 것을 권장해 드립니다.
 
 # Slack Web Hook 연동
 ![](https://i.imgur.com/MBhHN58.png)
