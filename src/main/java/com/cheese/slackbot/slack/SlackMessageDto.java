@@ -1,5 +1,6 @@
 package com.cheese.slackbot.slack;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,18 +50,20 @@ public class SlackMessageDto {
     public static class MessageButtonAttachment {
         private String text;
         private String fallback;
-        private String callback_id;
+        @JsonProperty("callback_id")
+        private String callbackId;
         private String color;
-        private String attachment_type;
+        @JsonProperty("attachment_type")
+        private String attachmentType;
         private List<Action> actions;
 
         @Builder
-        public MessageButtonAttachment(String text, String fallback, String callback_id, String color, String attachment_type, List<Action> actions) {
+        public MessageButtonAttachment(String text, String fallback, String callbackId, String color, String attachmentType, List<Action> actions) {
             this.text = text;
             this.fallback = fallback;
-            this.callback_id = callback_id;
+            this.callbackId = callbackId;
             this.color = color;
-            this.attachment_type = attachment_type;
+            this.attachmentType = attachmentType;
             this.actions = actions;
         }
     }
@@ -89,15 +92,17 @@ public class SlackMessageDto {
     public static class Confirm {
         private String title;
         private String text;
-        private String ok_text;
-        private String dismiss_text;
+        @JsonProperty("ok_text")
+        private String okText;
+        @JsonProperty("dismiss_text")
+        private String dismissText;
 
         @Builder
-        public Confirm(String title, String text, String ok_text, String dismiss_text) {
+        public Confirm(String title, String text, String okText, String dismissText) {
             this.title = title;
             this.text = text;
-            this.ok_text = ok_text;
-            this.dismiss_text = dismiss_text;
+            this.okText = okText;
+            this.dismissText = dismissText;
         }
     }
 
@@ -107,34 +112,41 @@ public class SlackMessageDto {
         private String fallback;
         private String color;
         private String pretext;
-        private String author_name;
+        @JsonProperty("author_name")
+        private String authorName;
+        @JsonProperty("author_link")
         private String author_link;
-        private String author_icon;
+        @JsonProperty("author_icon")
+        private String authorIcon;
         private String title;
-        private String title_link;
+        @JsonProperty("title_link")
+        private String titleLink;
         private String text;
-        private String image_url;
-        private String thumb_url;
+        @JsonProperty("image_url")
+        private String imageUrl;
+        @JsonProperty("thumb_url")
+        private String thumbUrl;
         private String footer;
-        private String footer_icon;
+        @JsonProperty("footer_icon")
+        private String footerIcon;
         private Long ts;
         private List<Field> fields;
 
         @Builder
-        public Attachment(String fallback, String color, String pretext, String author_name, String author_link, String author_icon, String title, String title_link, String text, String image_url, String thumb_url, String footer, String footer_icon, Long ts, List<Field> fields) {
+        public Attachment(String fallback, String color, String pretext, String authorName, String author_link, String authorIcon, String title, String titleLink, String text, String imageUrl, String thumbUrl, String footer, String footerIcon, Long ts, List<Field> fields) {
             this.fallback = fallback;
             this.color = color;
             this.pretext = pretext;
-            this.author_name = author_name;
+            this.authorName = authorName;
             this.author_link = author_link;
-            this.author_icon = author_icon;
+            this.authorIcon = authorIcon;
             this.title = title;
-            this.title_link = title_link;
+            this.titleLink = titleLink;
             this.text = text;
-            this.image_url = image_url;
-            this.thumb_url = thumb_url;
+            this.imageUrl = imageUrl;
+            this.thumbUrl = thumbUrl;
             this.footer = footer;
-            this.footer_icon = footer_icon;
+            this.footerIcon = footerIcon;
             this.ts = ts;
             this.fields = fields;
         }
